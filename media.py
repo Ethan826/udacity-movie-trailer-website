@@ -12,6 +12,8 @@ class Movie:
         self.title = title
         self.poster_image_url = pic
         self.trailer_youtube_url = vid
+
+        # Addtional information
         self.stars = stars
         self.director = director
 
@@ -22,7 +24,7 @@ def makeMovieList(jsonFileName):
       "MovieName": {
         "pic": "URL with box art",
         "vid": "URL with preview",
-        "director": "Director's name"
+        "director": "Director's name",
         "stars": ["Names", "of", "stars"]
       }
     }"""
