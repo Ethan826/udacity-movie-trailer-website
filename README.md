@@ -2,6 +2,6 @@
 
 To run, clone to a local repository, then call
 
-    $ python media.python
+    $ python media.py
 
 This will spawn your default browser with the website displayed.
