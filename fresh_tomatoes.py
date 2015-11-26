@@ -3,8 +3,6 @@ import os
 import re
 
 # Styles and scripting for the page
-# Udacity honor code: I learned about the inline comma-separated list from
-# here: http://bit.ly/1NupcKF
 main_page_head = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -143,6 +141,7 @@ def create_movie_tiles_content(movies):
         trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
 
+        # Learned from here: http://bit.ly/1OsMZaO
         starList = ", ".join(movie.stars)
 
         # Append the tile for the movie with its content filled in

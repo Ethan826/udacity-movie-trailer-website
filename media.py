@@ -18,7 +18,14 @@ class Movie:
 
 def makeMovieList(jsonFileName):
     """Accepts a filename containing JSON with the following format:
-    {"MovieName": {"pic": "URL with box art", "vid": "URL with preview"}}"""
+    {
+      "MovieName": {
+        "pic": "URL with box art",
+        "vid": "URL with preview",
+        "director": "Director's name"
+        "stars": ["Names", "of", "stars"]
+      }
+    }"""
     list = []
     with open(jsonFileName) as f:
         movies = load(f)
