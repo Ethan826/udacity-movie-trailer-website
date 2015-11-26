@@ -2,8 +2,9 @@ import webbrowser
 import os
 import re
 
-
 # Styles and scripting for the page
+# Udacity honor code: I learned about the inline comma-separated list from
+# here: http://bit.ly/1NupcKF
 main_page_head = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +86,6 @@ main_page_head = '''
 </head>
 '''
 
-
 # The main page layout and title bar
 main_page_content = '''
   <body>
@@ -119,12 +119,14 @@ main_page_content = '''
 </html>
 '''
 
-
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+    <p><strong>Director:</strong> {director}</p>
+    <p><strong>Stars: </strong>{stars}</p>
+
 </div>
 '''
 
@@ -133,20 +135,23 @@ def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
     content = ''
     for movie in movies:
-        # Extract the youtube ID from the url
-        youtube_id_match = re.search(
-            r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
+        # Extract the youtube ID from the url; make list of stars
+        youtube_id_match = re.search(r'(?<=v=)[^&#]+',
+                                     movie.trailer_youtube_url)
         youtube_id_match = youtube_id_match or re.search(
             r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
 
+        starList = ", ".join(movie.stars)
+
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
-        )
+            trailer_youtube_id=trailer_youtube_id,
+            director=movie.director,
+            stars=starList)
     return content
 
 

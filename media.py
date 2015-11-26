@@ -39,4 +39,4 @@ for movie in movieList:
     print movie.stars
 
 # Call Udacity-designed method
-# open_movies_page(movieList)
+open_movies_page(movieList)
