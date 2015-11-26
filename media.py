@@ -8,10 +8,12 @@ FILE = "movies.json"
 class Movie:
     """Movie object expected by fresh_tomatoes.py"""
 
-    def __init__(self, title, pic, vid):
+    def __init__(self, title, pic, vid, stars, director):
         self.title = title
         self.poster_image_url = pic
         self.trailer_youtube_url = vid
+        self.stars = stars
+        self.director = director
 
 
 def makeMovieList(jsonFileName):
@@ -25,12 +27,16 @@ def makeMovieList(jsonFileName):
         data = movies[movie]
         pic = data['pic']
         vid = data['vid']
-        movieInstance = Movie(name, pic, vid)
+        stars = data['stars']
+        director = data['director']
+        movieInstance = Movie(name, pic, vid, stars, director)
         list.append(movieInstance)
     return list
 
 # Make list of movie objects
 movieList = makeMovieList(FILE)
+for movie in movieList:
+    print movie.stars
 
 # Call Udacity-designed method
-open_movies_page(movieList)
+# open_movies_page(movieList)
